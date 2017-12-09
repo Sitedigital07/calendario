@@ -1,0 +1,24 @@
+{
+    "name": "digitalsite/calendario",
+    "description": "Modulos control de eventos",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sitedigital",
+            "email": "info@sitedigital.com.co"
+        }
+    ],
+     "autoload": {
+
+        "psr-4": {
+            "Digitalsite\\Calendario\\": "src/"
+        }
+
+    },
+    "minimum-stability": "dev",
+    "require": {
+
+         "illuminate/support": "~5"
+
+    }
+}
