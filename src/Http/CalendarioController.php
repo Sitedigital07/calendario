@@ -7,6 +7,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 class CalendarioController extends Controller{
@@ -41,6 +42,7 @@ public function index(){
 		
 		$calendario = new Calendar;
 		$calendario->title = Input::get('title');
+		$calendario->slug = Str::slug($calendario->title);
 		$calendario->body = Input::get('body');
 		$calendario->url = Input::get('url');
 		$calendario->class = Input::get('class');
@@ -49,6 +51,8 @@ public function index(){
 		$calendario->end = strtotime($calendario->end_old)*1000;
 		$calendario->start = strtotime($calendario->start_old)*1000;
 		$calendario->usuario_id = Input:: get ('metro');
+		$calendario->imagen = Input:: get ('FilePath');
+		$calendario->lugar = Input:: get ('lugar');
 		$calendario->save();
 
 		return Redirect('gestion/calendario')->with('status', 'ok_create');
@@ -78,6 +82,7 @@ public function delete($eventos_id) {
 		$input = Input::all();
 		$calendario = Calendar::find($id);
 		$calendario->title = Input::get('title');
+		$calendario->slug = Str::slug($calendario->title);
 		$calendario->body = Input::get('body');
 		$calendario->url = Input::get('url');
 		$calendario->class = Input::get('class');
@@ -85,6 +90,8 @@ public function delete($eventos_id) {
 		$calendario->start_old = Input:: get ('start');
 		$calendario->end = strtotime($calendario->end_old)*1000;
 		$calendario->start = strtotime($calendario->start_old)*1000;
+		$calendario->imagen = Input:: get ('FilePath');
+		$calendario->lugar = Input:: get ('lugar');
 		
 		$calendario->save();
 

@@ -9,7 +9,8 @@
    {{ Html::style('Calendario/css/bootstrap-datetimepicker.min.css') }}
    {{ Html::style('//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css') }}
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>  
+   <script src="/vendors/ckeditor/ckeditor.js"></script>  
  @stop
 
 
@@ -71,9 +72,23 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-password-input">Imagen</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="FilePath" readonly="readonly" onclick="openKCFinder(this)" value="" placeholder="Click para seleccionar imagen" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-password-input">Enlace Evento</label>
                                             <div class="col-md-9">
                                                {{Form::text('url', '', array('class' => 'form-control','placeholder'=>'Ingrese URL'))}}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-password-input">Lugar Evento</label>
+                                            <div class="col-md-9">
+                                               {{Form::text('lugar', '', array('class' => 'form-control','placeholder'=>'Ingrese Lugar'))}}
                                             </div>
                                         </div>
                               
@@ -142,6 +157,20 @@ $(document).ready(function(){
 </script>
 
 
+<script type="text/javascript">
+function openKCFinder(field) {
+    window.KCFinder = {
+        callBack: function(url) {
+            field.value = url;
+            window.KCFinder = null;
+        }
+    };
+    window.open('/vendors/kcfinder/browse.php?type=images&dir=files/public', 'kcfinder_textbox',
+        'status=0, toolbar=0, location=0, menubar=0, directories=0, ' +
+        'resizable=1, scrollbars=0, width=800, height=600'
+    );
+}
+</script>
      {{ Html::script('Calendario/js/moment.min.js') }}
      {{ Html::script('Calendario/js/bootstrap-datetimepicker.min.js') }}
      

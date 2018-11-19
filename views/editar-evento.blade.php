@@ -70,6 +70,13 @@
                                             </div>
                                         </div>
 
+                                         <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-password-input">Imagen</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="FilePath" readonly="readonly" onclick="openKCFinder(this)" value="{{$eventos->imagen}}" class="form-control" />
+                                            </div>
+                                        </div>
+
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="example-password-input">Enlace Evento</label>
                                             <div class="col-md-9">
@@ -144,6 +151,20 @@ $(document).ready(function(){
 });
 </script>
 
+<script type="text/javascript">
+function openKCFinder(field) {
+    window.KCFinder = {
+        callBack: function(url) {
+            field.value = url;
+            window.KCFinder = null;
+        }
+    };
+    window.open('/vendors/kcfinder/browse.php?type=images&dir=files/public', 'kcfinder_textbox',
+        'status=0, toolbar=0, location=0, menubar=0, directories=0, ' +
+        'resizable=1, scrollbars=0, width=800, height=600'
+    );
+}
+</script>
 
      {{ Html::script('Calendario/js/moment.min.js') }}
      {{ Html::script('Calendario/js/bootstrap-datetimepicker.min.js') }}
