@@ -48,8 +48,8 @@ public function index(){
 		$calendario->class = Input::get('class');
 		$calendario->end_old = Input:: get ('end');
 		$calendario->start_old = Input:: get ('start');
-		$calendario->end = strtotime($calendario->end_old)*1000;
-		$calendario->start = strtotime($calendario->start_old)*1000;
+		$calendario->end = strtotime($calendario->end_old).'000';
+		$calendario->start = strtotime($calendario->start_old).'000';
 		$calendario->usuario_id = Input:: get ('metro');
 		$calendario->imagen = Input:: get ('FilePath');
 		$calendario->lugar = Input:: get ('lugar');
@@ -88,9 +88,10 @@ public function delete($eventos_id) {
 		$calendario->class = Input::get('class');
 		$calendario->end_old = Input:: get ('end');
 		$calendario->start_old = Input:: get ('start');
-		$calendario->end = strtotime($calendario->end_old)*1000;
-		$calendario->start = strtotime($calendario->start_old)*1000;
+		$calendario->end = strtotime($calendario->end_old).'000';
+		$calendario->start = strtotime($calendario->start_old).'000';
 		$calendario->imagen = Input:: get ('FilePath');
+		$calendario->usuario_id = Input:: get ('metro');
 		$calendario->lugar = Input:: get ('lugar');
 		
 		$calendario->save();
