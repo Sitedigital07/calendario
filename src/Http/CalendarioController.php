@@ -3,11 +3,13 @@
 
 namespace Digitalsite\Calendario\Http;
 use Digitalsite\Calendario\Calendar;
+use Digitalsite\Calendario\Tipo;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
+use DB;
 
 use Illuminate\Http\Request;
 class CalendarioController extends Controller{
@@ -20,7 +22,10 @@ class CalendarioController extends Controller{
 
 public function index(){
 
-	    return view('calendario::calendarioSD');
+		$tiposweb = DB::table('events')
+		->join('tipo_evento','tipo_evento.tipo','=','events.class')
+		->get();
+	    return view('calendario::calendarioSD')->with('tiposweb', $tiposweb);
 	
 	}
 
@@ -35,6 +40,13 @@ public function index(){
 	    "success"=> 1,
 	    "result"=>$calendario));}
     }
+
+    public function tipos(){
+
+    	$tipos = Tipo::all();
+	    return view('calendario::tipos')->with('tipos', $tipos);
+	
+	}
 
       public function create() {
  
@@ -59,6 +71,33 @@ public function index(){
 
     }
 
+    public function createtipo() {
+		$calendario = new Tipo;
+		$calendario->tipo = Input::get('tipo');
+		$calendario->color = Input::get('color');
+		$calendario->save();
+		return Redirect('gestion/tipos/calendario')->with('status', 'ok_create');
+
+    }
+
+
+     public function updatetipo($id) {
+
+		$input = Input::all();
+		$calendario = Tipo::find($id);
+		$calendario->tipo = Input::get('tipo');
+		$calendario->color = Input::get('color');
+		$calendario->save();
+
+		return Redirect('/gestion/tipos/calendario')->with('status', 'ok_update');
+	}
+
+    public function editipo($id){
+
+        $tipos = Tipo::find($id);
+	    return view('calendario::editar-tipo')->with('tipos', $tipos);
+    }
+
      public function edit($id){
 
         $eventos = Calendar::find($id);
@@ -66,9 +105,10 @@ public function index(){
     }
 
      public function editar($id){
-
+     	
         $eventos = Calendar::find($id);
-	    return view('calendario::editar-evento')->with('eventos', $eventos);
+        $tipos = DB::table('tipo_evento')->get();
+	    return view('calendario::editar-evento')->with('eventos', $eventos)->with('tipos', $tipos);
     }
 
 public function delete($eventos_id) {
@@ -76,6 +116,13 @@ public function delete($eventos_id) {
 		$eventos = Calendar::find($eventos_id);
 		$eventos->delete();
 		return Redirect('gestion/calendario')->with('status', 'ok_delete');
+    }
+
+    public function deletetipo($id) {
+
+		$eventos = Tipo::find($id);
+		$eventos->delete();
+		return Redirect('gestion/tipos/calendario')->with('status', 'ok_delete');
     }
  public function update($id) {
 

@@ -23,6 +23,10 @@
       <li>
        <a href="/gestion/crear-evento"><i class="fa fa-calendar-plus-o"></i> Crear Evento</a>
       </li>
+      <li>
+       <a href="/gestion/tipos/calendario"><i class="fa fa-calendar-plus-o"></i>Tipo Evento</a>
+      </li>
+
      </ul>
     </div>
 
@@ -84,17 +88,24 @@
                                             </div>
                                         </div>
                               
-                                         <div class="form-group">
-                                            <label class="col-md-3 control-label" for="example-password-input">Tipo Evento</label>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-password-input">Lugar Evento</label>
                                             <div class="col-md-9">
-                                                   {{ Form::select('class',  [
-                                                    $eventos->class  => $eventos->class,
-                                                   'event-warning' => 'Importante',
-                                                   'event-success' => 'Reunión',
-                                                   'event-info' => 'Proyecto',
-                                                   'event-inverse' => 'Familia',
-                                                   'event-special' => 'Personal',
-                                                   'event-important' => 'Trabajo',], null, array('class' => 'form-control',)) }}
+                                               {{Form::text('lugar', '', array('class' => 'form-control','placeholder'=>'Ingrese Lugar'))}}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="example-text-input">Tipo Evento</label>
+                                            <div class="col-md-9">
+                                                <select name="contenidos" class="form-control" required>
+                                          
+                                                   <option value="{{$eventos->class}}" selected="selected">{{$eventos->class}}</option>
+                            
+                                                  @foreach($tipos as $tipos)
+                                                 <option value="{{$tipos->tipo}}">{{$tipos->tipo}}</option>
+                                                  @endforeach
+                                                </select>
                                             </div>
                                         </div>
 

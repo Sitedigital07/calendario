@@ -66,6 +66,10 @@
       <li>
        <a href="/gestion/crear-evento"><i class="fa fa-calendar-plus-o"></i> Crear Evento</a>
       </li>
+      <li>
+       <a href="/gestion/tipos/calendario"><i class="fa fa-calendar-plus-o"></i>Tipo Evento</a>
+      </li>
+
      </ul>
     </div>
     
