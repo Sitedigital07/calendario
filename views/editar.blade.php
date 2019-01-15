@@ -135,8 +135,8 @@
 
 
    <footer>
- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdn.ckeditor.com/4.6.0/full/ckeditor.js"></script>
    {{ Html::script('ckfinder/ckfinder.js') }}   
 
 
