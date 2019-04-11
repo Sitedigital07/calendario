@@ -16,8 +16,8 @@
       <li>
        <a href="/gestion/crear-evento"><i class="fa fa-calendar-plus-o"></i> Crear Evento</a>
       </li>
-      <li>
-       <a href="/gestion/tipos/calendario"><i class="fa fa-calendar-plus-o"></i>Tipo Evento</a>
+      <li class="active">
+       <a href="/gestion/tipos/calendario"><i class="fa fa-calendar-o"></i> Tipo Evento</a>
       </li>
 
 
@@ -30,21 +30,21 @@
   @if($status=='ok_create')
    <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Se registrado el Tema con exito</strong>
+    <strong> Tipo De Evento Registrado Con Éxito</strong> CMS...
    </div>
   @endif
 
   @if($status=='ok_delete')
    <div class="alert alert-danger">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Se ha eliminado la Nota seleccionada</strong>
+    <strong>Tipo De Evento Eliminado Con Éxito</strong> CMS...
    </div>
   @endif
 
   @if($status=='ok_update')
    <div class="alert alert-warning">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Usuario actualizado con éxito</strong>
+    <strong>Tipo De Evento Actualizado Con Éxito</strong> CMS...
    </div>
   @endif
 
@@ -53,12 +53,12 @@
 
 <div class="container">
 <div class="container-fluid">
-  <a href="/gestion/crear-tipo" class="btn btn-primary pull-right">Crear Tipo</a>
+  <a href="/gestion/crear-tipo" class="btn btn-primary pull-right">Crear Tipo Evento</a>
 </div>
 <br>
  <div class="block full">
                             <div class="block-title">
-                                <h2><strong>Categorias</strong> Registradas</h2>
+                                <h2><strong>Tipos De</strong> Eventos</h2>
                             </div>
                            
 
@@ -66,7 +66,7 @@
                                 <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">Titulo</th>
+                                            <th class="text-center">Título</th>
                                             <th class="text-center">Color</th>
                                           
                                          
