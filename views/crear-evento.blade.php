@@ -111,7 +111,7 @@
    </div>                       
   </div>
 
-  {{ Html::script('Calendario/jquery/jquery.min.js') }}
+  {{ Html::script('modulo-calendario/js/jquery.min.js') }}
    
   <script type="text/javascript">
    $(document).ready(function(){
@@ -145,6 +145,7 @@
   {{ Html::script('modulo-calendario/js/bootstrap-datetimepicker.min.js') }}
   {{ Html::script('modulo-calendario/js/validator.js')}}
   {{ Html::script('//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js') }} 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
  
 @stop
