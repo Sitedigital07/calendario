@@ -20,21 +20,21 @@
    @if($status=='ok_create')
     <div class="alert alert-success">
      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-     <strong>Usuario Registrado Con Éxito</strong> CMS...
+     <strong>Usuario registrado con éxito</strong> CMS...
     </div>
    @endif
 
    @if($status=='ok_delete')
     <div class="alert alert-danger">
      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-     <strong>Usuario Eliminado Con Éxito</strong> CMS...
+     <strong>Usuario eliminado con éxito</strong> CMS...
     </div>
    @endif
 
    @if($status=='ok_update')
     <div class="alert alert-warning">
      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-     <strong>Usuario Actualizado Con Éxito</strong> CMS...
+     <strong>Usuario actualizado con éxito</strong> CMS...
     </div>
    @endif
   </div>

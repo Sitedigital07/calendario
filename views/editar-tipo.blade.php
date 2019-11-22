@@ -33,7 +33,7 @@
       <h2><strong>Editar</strong> Tipo Evento</h2>
      </div>
                                   
-      {{ Form::open(array('method' => 'PUT','class' => 'form-horizontal','id' => 'defaultForm', 'url' => array('gestion/calendario/updatetipo',$tipos->id))) }}
+      {{ Form::open(array('method' => 'POST','class' => 'form-horizontal','id' => 'defaultForm', 'url' => array('gestion/calendario/updatetipo',$tipos->id))) }}
 
        <div class="form-group">
         <label class="col-md-3 control-label" for="example-text-input">Tipo Evento</label>

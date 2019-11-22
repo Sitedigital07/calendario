@@ -19,8 +19,7 @@
     </li>
    </ul>
   </div>
-  @foreach ($eventos as $evento) 
-  @endforeach
+
   <div class="container">
    <div class="row">
     <div class="col-md-12">
@@ -29,8 +28,9 @@
       <div class="block-title">
        <h2><strong>Editar</strong> Evento</h2>
       </div>
-       
-       {{Form::open(array('method' => 'PUT','class'=>'form-horizontal','id' =>'defaultForm', 'url' => array('gestion/calendario/actualizar',Request::segment(4)))) }}
+       @foreach ($eventos as $evento) 
+
+       {{Form::open(array('method' => 'POST','class'=>'form-horizontal','id' =>'defaultForm', 'url' => array('gestion/calendario/actualizar',Request::segment(4)))) }}
 
         <div class="form-group">
          <label class="col-md-3 control-label" for="example-text-input">Titulo</label>
@@ -103,7 +103,8 @@
         </div>
        
        {{ Form::close() }}
-                                
+       
+       @endforeach                       
      </div>
     </div>
    </div>                        

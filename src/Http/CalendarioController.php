@@ -81,15 +81,15 @@ class CalendarioController extends Controller{
  }
 
  public function edit($id){
-  $eventos = DB::table('events')
-  ->join('tipo_evento','events.class','=','tipo_evento.id')
+  $eventos = DB::table('tipo_evento')
+  ->join('events','events.class','=','tipo_evento.tipo')
   ->where('events.id','=',$id)->get();
   return view('calendario::editar')->with('eventos', $eventos);
  }
 
  public function editar($id){
   $eventos = DB::table('events')
-  ->join('tipo_evento','events.class','=','tipo_evento.id')
+  ->join('tipo_evento','events.class','=','tipo_evento.tipo')
   ->where('events.id','=',$id)->get();
   $tipos = DB::table('tipo_evento')->get();
   return view('calendario::editar-evento')->with('eventos', $eventos)->with('tipos', $tipos);

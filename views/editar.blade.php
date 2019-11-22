@@ -7,6 +7,8 @@
 
  @section('ContenidoSite-01')
 
+
+
  <div class="content-header">
   <ul class="nav-horizontal text-center">
    <li class="active"> 
@@ -20,12 +22,35 @@
    </li>
   </ul>
  </div>
- @foreach($eventos as $eventos)
- @endforeach
+
+<div class="container">
+  <?php $status=Session::get('status'); ?>
+  @if($status=='ok_create')
+   <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong> Evento registrado con éxito</strong> CMS...
+   </div>
+  @endif
+
+  @if($status=='ok_delete')
+   <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Evento eliminado con éxito</strong> CMS...
+   </div>
+  @endif
+
+  @if($status=='ok_update')
+   <div class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Evento actualizado con éxito</strong> CMS...
+   </div>
+  @endif
+
+ </div>
  <div class="container">
   <div class="col-md-12">
    <div class="block">
-    
+     @foreach($eventos as $eventos)
     <div class="block-title">
      <div class="block-options pull-right">
      </div>
@@ -64,13 +89,14 @@
       
       <div class="form-group form-actions">
        <div class="col-md-9 col-md-offset-3">
+         <a type="submit" class="btn btn-sm btn-warning" href="<?=URL::to('gestion/calendario/editar-evento/');?>/{{$eventos->id}}">Editar</a>
         <a type="submit" class="btn btn-sm btn-danger" href="<?=URL::to('gestion/calendario/eliminar/');?>/{{$eventos->id}}" onclick="return confirm('¿Está seguro que desea eliminar el registro?')">Eliminar</a>
-        <a type="submit" class="btn btn-sm btn-warning" href="<?=URL::to('gestion/calendario/editar-evento/');?>/{{$eventos->id}}">Editar</a>
+       
        </div>
       </div>
      
      </form>
-
+ @endforeach
    </div>
   </div>
  </div>
